@@ -1,0 +1,80 @@
+<div class="row scoreboard-container">
+    <div class="col-4 center scoreboard"><button routerLink= "/scoreboard">Scoreboard</button></div>
+</div>
+<div class="timer" *ngIf="match">
+  <p>{{match.timeplayed}}</p>
+</div>
+<div class="row player-container">
+  <form name="pickPlayers">
+    <div class="lucky">
+      <input *ngIf="pickPlayers" [(ngModel)]="lucky" type="checkbox" name="lucky" id="lucky"/>
+      <label for="lucky"></label>
+    </div>
+    <img *ngIf="match && match.lucky == true"class="clover" src="../../img/clover-green.png" />
+    <img *ngIf="match && match.lucky == false"class="clover" src="../../img/clover-grey.png" />
+    <div class="col-6 left">
+      <div *ngIf="pickPlayers;else player1stats">
+        <select name="player1" [(ngModel)]="selectPlayer1">
+          <option value="">kies een speler</option>
+          <option *ngFor="let player of players" [ngValue]="player">{{player.name}}</option>
+        </select>
+      </div>
+      <ng-template #player1stats>
+          <div class="playerstats">
+            <p class='name'>{{match.p1.name}}</p>
+            <p class='elo'>{{match.p1.elo}}</p>
+            <p class='wins'>Wins: {{match.p1.wins}}</p>
+            <p class='games'>Games Played: {{match.p2.games}}</p>
+          </div>
+      </ng-template>
+    </div>
+    <div class="col-6 right">
+      <div *ngIf="pickPlayers;else player2stats">
+        <select name="player2" [(ngModel)]="selectPlayer2">
+          <option value="">kies een speler</option>
+          <option *ngFor="let player of players" [ngValue]="player">{{player.name}}</option>
+        </select>
+      </div>
+      <ng-template #player2stats>
+          <div class="playerstats">
+            <p class='name'>{{match.p2.name}}</p>
+            <p class='elo'>{{match.p2.elo}}</p>
+            <p class='wins'>Wins: {{match.p2.wins}}</p>
+            <p class='games'>Games Played: {{match.p2.games}}</p>
+          </div>
+      </ng-template>
+    </div>
+  </form>
+</div>
+
+<div class="row match-container">
+  <div class="row points-container">
+    <div class="col-6 left p1">
+      <p class="points" *ngIf="match" (click)="!match || Match('score-','p1');">{{match.p1.score}}</p>
+    </div>
+    <div class="col-6 right p2">
+      <p class="points" *ngIf="match" (click)="!match || Match('score-','p2');">{{match.p2.score}}</p>
+    </div>
+  </div>
+
+  <div class="row bottom">
+    <div class="col-6 left p1" (click)="!match || Match('score','p1');">
+      <div class="server" *ngIf="match && match.server == 1">
+        <img src="../../img/server.png">
+      </div>
+    </div>
+    <div class="col-6 right p2" (click)="!match || Match('score','p2');">
+      <div class="server" *ngIf="match && match.server == 2">
+        <img src="../../img/server.png">
+      </div>
+    </div>
+  </div>
+  <button class='reset' (click)="Match('reset');" *ngIf="match">Reset</button>
+  <div class="matchbutton-container">
+    <button *ngIf="pickPlayers;else restartmatch" (click)="startMatch(selectPlayer1,selectPlayer2,lucky);">Start</button>
+    <ng-template #restartmatch>
+      <button class='restart' (click)="Match('restart');">Restart</button>
+    </ng-template>
+  </div>
+    
+</div>

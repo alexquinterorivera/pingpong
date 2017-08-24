@@ -1,0 +1,86 @@
+<div class="row link-container">
+    <div class="col-4 center matchpage">
+        <button routerLink= "/">Match</button>
+    </div>
+</div>
+
+<ng-template #loadingScoreboard>
+    <div style="width: 100%; text-align:center;">
+        <h1>Loading...</h1>
+    </div>
+</ng-template>
+
+<div class="row scoreboard-container" *ngIf="Loaded;else loadingScoreboard">
+    <table class="king" *ngIf="Loaded && history == false;">
+        <thead>
+            <tr>
+                <th colspan='7'><img class='crown' src="../../img/crown4.png"><h2>{{king.name}}</h2></th>
+            </tr>
+            <tr>
+                <th> Avg Playtime </th>
+                <th> ELO </th>
+                <th> Total games played </th>
+                <th> Wins </th>
+                <th> Losses </th>
+                <th> Average winrate </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{king.avg_playtime_s}}</td>
+                <td>{{king.elo}}</td>
+                <td>{{stats[king.id].games_played}}</td>
+                <td>{{stats[king.id].wins}}</td>
+                <td>{{stats[king.id].games_played - stats[king.id].wins}}</td>
+                <td>{{stats[king.id].winrate}}%</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ng-template #matchHistory>
+        <div class="pickaplayer"*ngIf="Loaded">
+            <div *ngIf="historyStatus == 'pickPlayer'">
+                <h1>{{players[p1-1].name}} vs. ?</h1>
+                <form>
+                    <select name="p2" [(ngModel)]="p2">
+                        <option value="">kies een speler</option>
+                        <option *ngFor="let player of players" [ngValue]="player.id">{{player.name}}</option>
+                    </select>
+                </form>
+                <button class="back" (click)="checkHistory('close',1);">Terug</button>
+                <button class="submit" (click)="checkHistory('getMatchHistory',p2)">Ophalen</button>
+            </div>
+            <div *ngIf="historyStatus == 'checkHistory'">
+                <button class="back" (click)="checkHistory('close',1);">Terug</button>
+                checking history
+            </div>
+            <div class='history' *ngIf="historyStatus == 'foundHistory'">
+                <h1>{{p1.name}} vs. {{p2.name}} </h1>
+                <ng2-smart-table [settings]="settings" [source]="playerHistory"></ng2-smart-table>
+                <button class="back" (click)="checkHistory('close',1);">Terug</button>
+            </div>
+        </div>
+    </ng-template>
+    <table class='col-8 scoreboard' *ngIf="Loaded && history == false;else matchHistory">
+        <thead>
+            <tr>
+                <th></th>
+                <th *ngFor="let player of players" (click)="checkHistory('pickPlayer',player.id)">{{player.name}}<br>(loser)</th>
+                <th>Total Games</th>
+                <th>Playtime</th>
+                <th>Wins</th>
+                <th>elo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let player of players">
+                <td>{{player.name}} (winner)</td>
+                <td *ngFor="let match of matches[player.id]">{{match.wins}}</td>
+                <td>{{stats[player.id].games_played || 0}}</td>
+                <td>{{stats[player.id].avg_playtime_s || 0}}</td>
+                <td>{{stats[player.id].wins || 0}}</td>
+                <td>{{stats[player.id].elo || 0}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

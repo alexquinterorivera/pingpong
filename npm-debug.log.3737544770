@@ -1,0 +1,49 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'run',
+1 verbose cli   'electron:serve' ]
+2 info using npm@3.10.10
+3 info using node@v6.11.1
+4 verbose run-script [ 'preelectron:serve', 'electron:serve', 'postelectron:serve' ]
+5 info lifecycle foodticket-pingpong@0.9.0~preelectron:serve: foodticket-pingpong@0.9.0
+6 silly lifecycle foodticket-pingpong@0.9.0~preelectron:serve: no script for preelectron:serve, continuing
+7 info lifecycle foodticket-pingpong@0.9.0~electron:serve: foodticket-pingpong@0.9.0
+8 verbose lifecycle foodticket-pingpong@0.9.0~electron:serve: unsafe-perm in lifecycle true
+9 verbose lifecycle foodticket-pingpong@0.9.0~electron:serve: PATH: C:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;C:\Users\alex\Desktop\foodticket\pingpong\node_modules\.bin;C:\ProgramData\Oracle\Java\javapath;C:\usr\site\bin;C:\usr\bin;C:\Perl64\site\bin;C:\Perl64\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\MySQL\MySQL Fabric 1.5 & MySQL Utilities 1.5\;C:\Program Files (x86)\MySQL\MySQL Fabric 1.5 & MySQL Utilities 1.5\Doctrine extensions for PHP\;C:\Program Files\TortoiseSVN\bin;C:\Program Files\PostgreSQL\pg95\bin;C:\Program Files (x86)\Skype\Phone\;C:\Program Files (x86)\IDM Computer Solutions\UltraEdit;C:\Program Files\Git\cmd;C:\Program Files (x86)\Common Files\Seagate\SnapAPI\;C:\usr\websocket\;S:\usr\websocket;C:\Program Files\nodejs\;;C:\Program Files (x86)\Microsoft VS Code\bin;C:\Users\alex\AppData\Local\Microsoft\WindowsApps;C:\Users\alex\AppData\Roaming\npm;C:\Program Files (x86)\Common Files\Acronis\TibMounter64
+10 verbose lifecycle foodticket-pingpong@0.9.0~electron:serve: CWD: C:\Users\alex\Desktop\foodticket\pingpong
+11 silly lifecycle foodticket-pingpong@0.9.0~electron:serve: Args: [ '/d /s /c',
+11 silly lifecycle   'npm run build:electron:main && electron ./dist --serve && npm run ./sqliteserver/app.js' ]
+12 silly lifecycle foodticket-pingpong@0.9.0~electron:serve: Returned: code: 1  signal: null
+13 info lifecycle foodticket-pingpong@0.9.0~electron:serve: Failed to exec electron:serve script
+14 verbose stack Error: foodticket-pingpong@0.9.0 electron:serve: `npm run build:electron:main && electron ./dist --serve && npm run ./sqliteserver/app.js`
+14 verbose stack Exit status 1
+14 verbose stack     at EventEmitter.<anonymous> (C:\Program Files\nodejs\node_modules\npm\lib\utils\lifecycle.js:255:16)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at EventEmitter.emit (events.js:191:7)
+14 verbose stack     at ChildProcess.<anonymous> (C:\Program Files\nodejs\node_modules\npm\lib\utils\spawn.js:40:14)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at ChildProcess.emit (events.js:191:7)
+14 verbose stack     at maybeClose (internal/child_process.js:891:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
+15 verbose pkgid foodticket-pingpong@0.9.0
+16 verbose cwd C:\Users\alex\Desktop\foodticket\pingpong
+17 error Windows_NT 10.0.15063
+18 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "run" "electron:serve"
+19 error node v6.11.1
+20 error npm  v3.10.10
+21 error code ELIFECYCLE
+22 error foodticket-pingpong@0.9.0 electron:serve: `npm run build:electron:main && electron ./dist --serve && npm run ./sqliteserver/app.js`
+22 error Exit status 1
+23 error Failed at the foodticket-pingpong@0.9.0 electron:serve script 'npm run build:electron:main && electron ./dist --serve && npm run ./sqliteserver/app.js'.
+23 error Make sure you have the latest version of node.js and npm installed.
+23 error If you do, this is most likely a problem with the foodticket-pingpong package,
+23 error not with npm itself.
+23 error Tell the author that this fails on your system:
+23 error     npm run build:electron:main && electron ./dist --serve && npm run ./sqliteserver/app.js
+23 error You can get information on how to open an issue for this project with:
+23 error     npm bugs foodticket-pingpong
+23 error Or if that isn't available, you can get their info via:
+23 error     npm owner ls foodticket-pingpong
+23 error There is likely additional logging output above.
+24 verbose exit [ 1, true ]

@@ -1,0 +1,174 @@
+$ftorange: #e36220;
+
+@mixin table-settings{
+    margin: 0 auto;
+    margin-top: 20px;
+	width: 90%;
+	border: 5px solid black;
+	overflow: hidden;
+	font-size: 20px;
+    
+    tr:last-child td{
+        border-bottom: none; 
+    }
+    tr:hover{
+        background-color: lightgrey;
+    }
+    thead{
+        th{
+            color: #e36220 !important;
+            border-left: 1px solid black;
+            border-bottom: 1px solid black;
+        }
+        th:first-child{
+            border-left: none;
+        }
+    }
+    tbody{  
+        td{
+            border-left: 1px solid black;
+            border-bottom: 1px solid black;
+            text-align: center;
+            color: black;
+        }
+        td:first-child{
+            font-weight: bold;
+            color: #e36220;
+            border-left: none;
+        }
+    }
+}
+
+@mixin no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.row{
+    width: 100%;
+    float: left;
+    text-align:center;
+}
+.col-4, .col-6, .col-12, .col-8{
+    width: 33%;
+    height: 100%;
+    float: left;
+    text-align: center;
+}
+.col-6{
+    width: 50%;
+}
+.col-8{
+    width: 66%;
+}
+.col-12{
+    width: 100%;
+}
+.center{
+    margin: 0 auto;
+    display: block;
+    float: none;
+}
+
+.link-container{
+    height: 60px;
+    background-color: black;
+    .matchpage{
+        button{
+            background-color:$ftorange;
+            color: white;
+            width:150px;
+            height:100%;
+            border: none;
+            font-size: 23px;
+        }
+    }
+}
+
+.pickaplayer{
+    margin-top: 60px;
+    button{
+        background-color: $ftorange;
+        font-size: 20px;
+        color: white;
+        width: 100px;
+        height: 40px;
+        border: none;
+        margin-top: 10px;
+    }
+    button:hover{
+        cursor: pointer;
+    }
+    button.submit{
+        margin-left: 30px;
+    }
+    
+    h1{
+        margin: 0 auto;
+    }
+
+    select{
+        font-size: 20px;
+        width: 200px;
+        height: 60px;
+        border: 1px solid black;
+        margin: 10px 0 10px 0;
+    }
+}
+
+
+table.scoreboard{
+    @include table-settings;
+    th:hover{
+        cursor: pointer;
+    }
+    float: none;
+
+    td:first-child{
+        font-weight: bold;
+    }
+
+    td{
+        height:50px;
+    }
+}
+
+:host /deep/ ng2-smart-table {
+    table{
+        @include table-settings;
+
+        thead{
+            tr:last-child{
+                height:20px;
+            }
+        }
+    }
+
+    nav{
+        font-size: 30px;
+        ul{
+            margin: 10px 0 10px 0;
+        }
+    }
+}
+
+table.king{
+    thead tr:first-child{
+        h2{
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+        img{
+            margin-bottom: -10px;
+        }
+    }
+    @include table-settings;
+    tbody td:first-child{
+        color: black;
+        font-weight: normal;
+    }
+}
